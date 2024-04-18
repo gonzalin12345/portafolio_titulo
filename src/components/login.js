@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 const LoginUsuario = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
     email: '',
-    username: '',
     password: ''
   });
+
+  const navigate = useNavigate();
+  const registrarUser = () => {
+    console.log('here')
+    navigate('/registro'); 
+  }
+
+  const userLoggin = localStorage.getItem("userLoggin");
+
+  if(userLoggin) {
+    navigate('/buscar');
+  }
 
   // Manejar cambios en los campos del formulario
   const handleChange = (e) => {
@@ -25,6 +36,8 @@ const LoginUsuario = () => {
 
     console.log(JSON.stringify(formData))
 
+  
+
     try {
      const response = await fetch('http://localhost:8000/api/v1/usuario/login', {
         method: 'POST',
@@ -39,7 +52,13 @@ const LoginUsuario = () => {
         alert('Usuario no Registrado');
         //throw new Error('Network response was not ok');
       } else {
-        alert('Login Exitoso');
+
+        const data = await response.json();
+        localStorage.setItem("userLoggin", JSON.stringify(data));
+
+        navigate('/buscar')
+  
+        
       }
      
        /*
@@ -64,11 +83,11 @@ const LoginUsuario = () => {
       <h2> Iniciar sesion</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          Email:
           <input
-            type="text"
-            name="username"
-            value={formData.username}
+            type="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
           />
         </label>
@@ -82,6 +101,9 @@ const LoginUsuario = () => {
           />
         </label>
         <button type="submit">Login</button>
+        <button onClick={registrarUser}>Registrarse</button>
+
+
       </form>
     </div>
   );

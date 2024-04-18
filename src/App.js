@@ -1,39 +1,85 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/sidebar/sidebar';
 import RegistroUsuario from './components/registrar';
 import DeleteUsuario from './components/delete';
 import LoginUsuario from './components/login';
 import BuscarUsuario from './components/buscar';
 import ListarUsuarios from './components/listar';
-import EditarUsuario from './components/editar';  
+import EditarUsuario from './components/editar';
+import DrawerMenu from './components/DrawerMenu';
+import Asistencia from './components/asistencia';
+
+import ProtectedRoute from './components/ProtectedRoute';  
 
 
 
 
 function App() {
-  /*return (
+  /*
+    return (
     <div className="App">
       <header className="App-header">        
-      <ListarUsuarios />
+      <LoginUsuario />
       </header>
-    </div>*/ 
+    </div>
+      */
+
+  const userLoggin = localStorage.getItem("userLoggin");
+
+  console.log(userLoggin);
+
   return (
     <Router>
-      <div className="App">
-        <Navbar />
-        <Switch>
-          <Route path="/registro" component={RegistroUsuario} />
-          <Route path="/delete" component={DeleteUsuario} />
-          <Route path="/login" component={LoginUsuario} />
-          <Route path="/buscar" component={BuscarUsuario} />
-          <Route path="/listar" component={ListarUsuarios} />
-          <Route path="/editar" component={EditarUsuario} />
-        </Switch>
-      </div>
-    </Router> 
+      <div className="App"> 
+      
+     
+      
+   
+          <Routes>
+            <Route path="/registro" element={<RegistroUsuario />} />
+            <Route path="/login" element={<LoginUsuario />} />
+
+            <Route element={<ProtectedRoute user={userLoggin} />}>
+              <Route path="/delete" element={< DeleteUsuario/>} />
+              <Route path="/buscar" element={<BuscarUsuario />} />
+              <Route path="/listar" element={<ListarUsuarios />} />
+              <Route path="/editar" element={<EditarUsuario />} />
+              <Route path="/drawer" element={<DrawerMenu />} />
+              <Route path="/asistencia" element={<Asistencia />} />
+            </Route>
+           
+          </Routes>
+        
+      </div>  
+    </Router>
   );
+
+ 
+  
 }
+   /* 
+  return (
+    <Router>
+      <div className="App"> 
+      {userLoggin &&
+      <Sidebar />
+      }
+        <div className="content">
+          <Routes>
+            <Route path="/registro" element={<RegistroUsuario />} />
+            <Route path="/login" element={<LoginUsuario />} />
+            <Route path="/delete" element={< DeleteUsuario/>} />
+            <Route path="/buscar" element={<BuscarUsuario />} />
+            <Route path="/listar" element={<ListarUsuarios />} />
+            <Route path="/editar" element={<EditarUsuario />} />
+          </Routes>
+        </div>
+      </div>  
+    </Router>
+  );
+  */
+
 
 export default App;

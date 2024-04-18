@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 const DeleteUsuario = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
+    rut:'',
     nombre: '',
     apellido: '',
+    tipo_usuario: '',
     email: '',
-    username: '',
     password: ''
   });
 
@@ -25,7 +26,7 @@ const DeleteUsuario = () => {
     //let dataJson =JSON.stringify(formData); 
    console.log(formData.id)
     try {
-     const response = await fetch('http://localhost:8000/api/v1/usuario/delete/'+formData.id, {
+     const response = await fetch('http://localhost:8000/api/v1/usuario/delete/'+formData.rut, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -63,8 +64,8 @@ const DeleteUsuario = () => {
           id:
           <input
             type="text"
-            name="id"
-            value={formData.ide}
+            name="rut"
+            value={formData.rut}
             onChange={handleChange}
           />
         </label>

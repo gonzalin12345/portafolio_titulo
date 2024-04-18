@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 const EditarUsuario = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
+    rut:'',
     nombre: '',
     apellido: '',
+    tipo_usuario: '',
     email: '',
-    username: '',
     password: ''
   });
 
@@ -25,7 +26,7 @@ const EditarUsuario = () => {
 
 
     try {
-     const response = await fetch('http://localhost:8000/api/v1/usuario/update/'+ formData.id, {
+     const response = await fetch('http://localhost:8000/api/v1/usuario/update/'+ formData.rut, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -60,11 +61,11 @@ const EditarUsuario = () => {
       <h2>Editar de Usuario</h2>
       <form onSubmit={handleSubmit}>
       <label>
-          id:
+          rut:
           <input
             type="text"
-            name="id"
-            value={formData.ide}
+            name="rut"
+            value={formData.rut}
             onChange={handleChange}
           />
         </label>
@@ -92,15 +93,6 @@ const EditarUsuario = () => {
             type="email"
             name="email"
             value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
             onChange={handleChange}
           />
         </label>
