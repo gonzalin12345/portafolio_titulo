@@ -19,7 +19,7 @@
     margin: 15px 0px 0px 0px;
 
 }
-label p{
+.login label p{
   margin: 4px 0px;
   display: flex;
   font-size: 12px;
@@ -44,7 +44,7 @@ label p{
   color: rgb(247, 249, 252);
   padding: 10px;
 }
-a{
+.login a{
   color: #414BB2;
   display: flex;
   font-size: 15px;

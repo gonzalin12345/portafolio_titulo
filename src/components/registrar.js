@@ -60,69 +60,73 @@ const RegistroUsuario = () => {
     <div className='registro'> 
       <h1>Registro</h1>
       <form onSubmit={handleSubmit}>
-       <div>
+       <div className='datos'>
         <label>
           <p>RUT </p> 
           <input
             type="text"
             name="rut"
             value={formData.rut}
+            placeholder='21223034-4'
             onChange={handleChange}
           />
         </label>
         <label>
-          Nombre
+          <p>Nombre</p>
           <input
             type="text"
             name="nombre"
             value={formData.nombre}
+            placeholder='martin'
             onChange={handleChange}
           />
         </label>
        </div> 
-       <div>
+       <div className='datos'>
         <label>
-          Tipo de usuario
+          <p>Tipo de usuario</p> 
           <input
             type="text"
             name="tipo_usuario"
             value={formData.tipo_usuario}
+            placeholder='user'
             onChange={handleChange}
           />
         </label>
         <label>
-          Apellido
+          <p>Apellido</p>
           <input
             type="text"
             name="apellido"
             value={formData.apellido}
+            placeholder='perez'
             onChange={handleChange}
           />
         </label>
        </div>
-       <div>
+       <div className='datos'>
         <label>
-          Email
+          <p>Email</p>
           <input
             type="email"
             name="email"
             value={formData.email}
+            placeholder='superhero@gmail.com'
             onChange={handleChange}
           />
         </label>
         <label>
-          Contraseña
+          <p>Contraseña</p>
           <input
             type="password"
             name="password"
             value={formData.password}
+            placeholder='tu contraseña'
             onChange={handleChange}
           />
         </label>
        </div>
-        <div style={{flexDirection: 'column'}}>
-          <button type="submit">Registrarse</button>
-        </div>
+        <button type="submit">Registrarse</button>
       </form>
     </div>
   );
