@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './lista.css';
 const ListarUsuarios = () => {
   const [data, setData] = useState(null);
 
@@ -38,6 +38,7 @@ const ListarUsuarios = () => {
           </div>
         {data.map(item => (
           <div className="fila" key={item.rut}>
+            <div className="columna">{item.rut}</div>
             <div className="columna">{item.email}</div>
             <div className="columna">{item.nombre}</div>
             <div className="columna">{item.apellido}</div>

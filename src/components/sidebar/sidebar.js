@@ -95,7 +95,7 @@ const Sidebar = ({changeOpen}) => {
 
       <Button onClick={() => {
       changeOpen(true)
-      }} >Open drawer</Button>
+      }} >Menu</Button>
       <button onClick={handleLogout}>Sign Out</button>
     </div>    
   );

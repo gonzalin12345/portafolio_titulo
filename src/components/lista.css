@@ -1,0 +1,37 @@
+/* Estilos para la lista de usuarios */
+.lista-container {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .fila-titulos {
+    background-color: #3498db; /* Azul claro */
+    color: #fff;
+  }
+  
+  .fila {
+    background-color: #2ecc71; /* Verde */
+    color: #fff;
+  }
+  
+  .columna {
+    padding: 15px;
+    min-width: 170px; /* Ancho mínimo para cada columna */
+    /*word-wrap: break-word;  Permite que el texto se envuelva dentro de la columna */
+  }
+  
+  .columna:not(:last-child) {
+    border-right: 1px solid #fff; /* Línea divisoria entre columnas */
+  }
+  
+  /* Estilos para resaltar los títulos */ 
+  .titulo {
+    font-weight: bold;
+  }
+  
+  /* Eliminar línea divisoria debajo de la fila de encabezado */
+  .fila-titulos .columna {
+    border-bottom: none;
+  }
+  

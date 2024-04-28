@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './registrar.css';
 const RegistroUsuario = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
@@ -57,11 +57,12 @@ const RegistroUsuario = () => {
   };
 
   return (
-    <div className='RegistroUsuario'> 
-      <h2>Registro de Usuario</h2>
+    <div className='registro'> 
+      <h1>Registro</h1>
       <form onSubmit={handleSubmit}>
-      <label>
-          Rut:
+       <div>
+        <label>
+          <p>RUT </p> 
           <input
             type="text"
             name="rut"
@@ -70,7 +71,7 @@ const RegistroUsuario = () => {
           />
         </label>
         <label>
-          Nombre:
+          Nombre
           <input
             type="text"
             name="nombre"
@@ -78,26 +79,10 @@ const RegistroUsuario = () => {
             onChange={handleChange}
           />
         </label>
+       </div> 
+       <div>
         <label>
-          Apellido:
-          <input
-            type="text"
-            name="apellido"
-            value={formData.apellido}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          tipo de usuario:
+          Tipo de usuario
           <input
             type="text"
             name="tipo_usuario"
@@ -106,7 +91,27 @@ const RegistroUsuario = () => {
           />
         </label>
         <label>
-          Contraseña:
+          Apellido
+          <input
+            type="text"
+            name="apellido"
+            value={formData.apellido}
+            onChange={handleChange}
+          />
+        </label>
+       </div>
+       <div>
+        <label>
+          Email
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Contraseña
           <input
             type="password"
             name="password"
@@ -114,9 +119,9 @@ const RegistroUsuario = () => {
             onChange={handleChange}
           />
         </label>
+       </div>
         <div style={{flexDirection: 'column'}}>
           <button type="submit">Registrarse</button>
-          <button type="submit">login</button>
         </div>
       </form>
     </div>

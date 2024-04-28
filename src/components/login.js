@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './login.css';
 import { useNavigate } from 'react-router-dom';
 
 const LoginUsuario = () => {
@@ -10,10 +10,6 @@ const LoginUsuario = () => {
   });
 
   const navigate = useNavigate();
-  const registrarUser = () => {
-    console.log('here')
-    navigate('/registro'); 
-  }
 
   const userLoggin = localStorage.getItem("userLoggin");
 
@@ -50,7 +46,7 @@ const LoginUsuario = () => {
       if (!response.ok) {
         console.log(response)
         alert('Usuario no Registrado');
-        //throw new Error('Network response was not ok');
+        //throw new Error('Network response was not ok'); 
       } else {
 
         const data = await response.json();
@@ -79,31 +75,31 @@ const LoginUsuario = () => {
   };
 
   return (
-    <div className='RegistroUsuario'>
-      <h2> Iniciar sesion</h2>
+    <div className='login'>
+      <h1> Iniciar Sesión</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Email:
+          <p>Correo electrónico</p>
           <input
             type="email"
             name="email"
             value={formData.email}
+            placeholder='superhero@gmail.com'
             onChange={handleChange}
           />
         </label>
         <label>
-          Contraseña:
+          <p>Contraseña</p>
           <input
             type="password"
             name="password"
             value={formData.password}
+            placeholder='tu constraseña'
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Login</button>
-        <button onClick={registrarUser}>Registrarse</button>
-
-
+        <button type="submit">Iniciar sesión</button>
+        <a>¿Olvidaste la contraseña?</a> 
       </form>
     </div>
   );
