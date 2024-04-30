@@ -1,9 +1,30 @@
 .sidebar {
     display: flex;
-    background-color: #fff;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px;
+    background-color: #050038;
+    justify-content: space-between;
+}
+.sidebar h1{
+    color: white;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width:700px){
+    .sidebar h1{
+        font-size: 21px;
+    }
+}
+path{
+    color: white;
+}
+svg{
+    font-size: 35px;
+}
+.logout{
+    
 }
 
 

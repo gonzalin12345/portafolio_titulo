@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import './sidebar.css';
+import { FaBars } from "react-icons/fa";
 
 import Button from '@mui/material/Button';
 
@@ -60,18 +61,27 @@ const Sidebar = ({changeOpen}) => {
     {
       display: 'Buscar',
       to: '/buscar',
+      title: 'Búsqueda de usuarios',
     },
     {
       display: 'Eliminar',
       to: '/delete',
+      title: 'Eliminar de usuarios',
     },
     {
       display: 'Listar',
       to: '/listar',
+      title: 'Lista de usuarios',
     },
     {
       display: 'Editar',
       to: '/editar',
+      title: 'Editar usuarios',
+    },
+    {
+      display: 'Asistencia',
+      to: '/asistencia',
+      title: 'Asistencia',
     },
     {
       display: 'Drawer',
@@ -90,14 +100,21 @@ const Sidebar = ({changeOpen}) => {
     setActiveIndex(curPath.length === 0 ? 0 : activeItem);
   }, [location, sidebarNavItems]);
 
+  const getTitle = () => {
+    const curPath = location.pathname.split('/')[1];
+    const currentItem = sidebarNavItems.find(item => item.to.split('/')[1] === curPath);
+    return currentItem ? currentItem.title : "Lista de usuarios"; // Título predeterminado
+  }
+
   return (
     <div className='sidebar'>
 
       <Button onClick={() => {
       changeOpen(true)
-      }} >Menu</Button>
-      <button onClick={handleLogout}>Sign Out</button>
-    </div>    
+      }} className='menu'><FaBars/></Button>
+      <h1>{getTitle()}</h1>
+      <button onClick={handleLogout} className='logout'>Cerrar sesion</button>
+    </div>
   );
 
 }

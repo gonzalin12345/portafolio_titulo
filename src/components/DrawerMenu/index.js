@@ -10,6 +10,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { GoSearch } from "react-icons/go";
+import { BsTrash } from "react-icons/bs";
+import { FaListUl } from "react-icons/fa6";
+import { FaUserEdit } from "react-icons/fa";
+import { MdOutlineAssignmentInd } from "react-icons/md";
 
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -19,30 +24,38 @@ export default function TemporaryDrawer({open, setOpen}) {
     {
       display: 'Buscar',
       to: '/buscar',
+      icon: <GoSearch />,
     },
     {
       display: 'Eliminar',
       to: '/delete',
+      icon: <BsTrash />,
+
     },
     {
       display: 'Listar',
       to: '/listar',
+      icon: <FaListUl />,
     },
     {
       display: 'Editar',
       to: '/editar',
+      icon: <FaUserEdit />,
     },
     {
       display: 'Asistencia',
       to: '/asistencia',
+      icon:<MdOutlineAssignmentInd />,
     },
+
   
 
   ];
   
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={() => {
+    <Box sx={{ backgroundColor: '#050038', paddingBottom:47, width: 250, '@media (max-width: 700px)': {width: 200,}, 
+    }}  role="presentation" onClick={() => {
       setOpen(false)
     }}>
       <List>
@@ -50,12 +63,13 @@ export default function TemporaryDrawer({open, setOpen}) {
           <ListItem key={item.display} disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {item.icon}
             </ListItemIcon>
             
             <NavLink
            to={item.to}
            key={index}
+           style={{textDecoration: 'none'}}
          // Esta clase se aplicará cuando el enlace esté activo
          >
         <ListItemText primary={item.display} />
@@ -65,10 +79,10 @@ export default function TemporaryDrawer({open, setOpen}) {
           
         ))}
       </List>
-      <Divider />
-      
-     
+      <Divider />      
+    
     </Box>
+    
   );
 
 

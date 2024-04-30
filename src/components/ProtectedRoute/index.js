@@ -37,8 +37,8 @@ function ProtectedRoute({user, children}) {
     }
     
 
-    return <div style={{display: 'flex', flex:1, flexDirection: 'row'}}>
-      <div  style={{display: 'flex',flex:1}}> 
+    return <div style={{display: 'flex', flex:1, flexDirection: 'column'}}>
+      <div  style={{display: 'flex',flex:0.8}} className='side'> 
         <Sidebar   changeOpen={setOpen} />
        <DrawerMenu open={open} setOpen={setOpen}/> 
       </div>

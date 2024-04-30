@@ -39,7 +39,9 @@
     transform: rotate(360deg);
   }
 }
-
+.MuiListItemIcon-root svg{
+  font-size: 25px;
+}
 
 .RegistroUsuario {
   max-width: 280px;

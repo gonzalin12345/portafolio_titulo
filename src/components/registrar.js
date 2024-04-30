@@ -85,7 +85,7 @@ const RegistroUsuario = () => {
        <div className='datos'>
         <label>
           <p>Tipo de usuario</p> 
-          <input
+          <input style={{'margin': '0px 10px 0px 0px'}}
             type="text"
             name="tipo_usuario"
             value={formData.tipo_usuario}

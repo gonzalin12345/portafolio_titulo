@@ -29,22 +29,19 @@ const ListarUsuarios = () => {
             <li className="item" key={item.id}>{item.email} {item.username} {item.nombre} {item.apellido} </li>
           ))}
         </ul>*/
-        <div className="lista-container" key="lista">
-            <div className="fila-titulos">
-            <div className="titulo">Rut</div>
-            <div className="titulo">Email</div>
-            <div className="titulo">Nombre</div>
-            <div className="titulo">Apellido</div>
-          </div>
+        <div className='titulo'> 
+          <h1> Aqui podra visualizar la informacion de todos los usuarios</h1>
+        <div key="lista" className='lista-container'>
         {data.map(item => (
-          <div className="fila" key={item.rut}>
-            <div className="columna">{item.rut}</div>
-            <div className="columna">{item.email}</div>
-            <div className="columna">{item.nombre}</div>
-            <div className="columna">{item.apellido}</div>
+          <div key={item.rut} className='lista'>
+            <div> Nombre: {item.nombre} </div>
+            <div> Apellido: {item.apellido} </div>
+            <div> Rut: {item.rut} </div>
+            <div> Email: {item.email} </div>
           </div>
         ))}
-      </div>
+        </div>
+        </div>
       ) : (
         <p>Cargando...</p>
       )}
