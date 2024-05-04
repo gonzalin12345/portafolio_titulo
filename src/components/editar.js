@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './editar.css'
 
 const EditarUsuario = () => {
   // Estado para almacenar los datos del formulario
@@ -57,55 +58,75 @@ const EditarUsuario = () => {
   };
 
   return (
-    <div className='RegistroUsuario'>
-      <h2>Editar de Usuario</h2>
+    <div className='editar'>
       <form onSubmit={handleSubmit}>
-      <label>
-          rut:
-          <input
-            type="text"
-            name="rut"
-            value={formData.rut}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Nombre:
-          <input
-            type="text"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Apellido:
-          <input
-            type="text"
-            name="apellido"
-            value={formData.apellido}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Contraseña:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Editar</button>
+        <div> 
+          <label>
+            <p>Rut del usuario:</p> 
+            <input
+              type="text"
+              name="rut"
+              value={formData.rut}
+              onChange={handleChange}
+              placeholder='213783940'
+            />
+          </label>
+          <label>
+            <p>Tipo de usuario:</p>
+            <input
+              type="text"
+              name="tipo_usuario"
+              value={formData.tipo_usuario}
+              onChange={handleChange}
+              placeholder='admin'
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            <p>Nombre:</p> 
+            <input
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              placeholder='patin'
+            />
+          </label>
+          <label>
+            <p>Email:</p> 
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder='patin@gmail.com'
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+              <p>Apellido:</p> 
+              <input
+                type="text"
+                name="apellido"
+                value={formData.apellido}
+                onChange={handleChange}
+                placeholder='zuniga'
+              />
+          </label>
+          <label>
+            <p>Contraseña:</p> 
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder='tu contraseña'
+            />
+          </label>
+        </div>
+        <button type="submit">Modificar</button>
       </form>
     </div>
   );

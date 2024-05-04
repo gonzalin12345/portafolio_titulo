@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './asistencia.css'
 
 const PassAsistencia = () => {
     const [estudiantes, setEstudiantes] = useState([]);
@@ -66,22 +67,24 @@ const PassAsistencia = () => {
     };
 
     return (
-        <div>
-            <h2>Registrar Asistencia</h2>
+        <div className='asistencia'>
+            <h2>Asistencia</h2>
             <ul>
                 {estudiantes.map(estudiante => (
                     <li key={estudiante.rut}>
+                        <p>{estudiante.nombre} {estudiante.apellido}</p>
                         <input
                             type="checkbox"
                             checked={asistencia.find(item => item.rut === estudiante.rut)?.presente || false}
                             onChange={e => handleAsistenciaChange(estudiante, e.target.checked)}
                         />
-                        {estudiante.nombre} {estudiante.apellido}
+                        <p>Ausente</p>  
                     </li>
                 ))}
             </ul>
             <button onClick={handleSubmit}>Registrar Asistencia</button>
         </div>
+            
     );
 };
 

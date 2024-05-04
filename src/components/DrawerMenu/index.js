@@ -16,10 +16,10 @@ import { FaListUl } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineAssignmentInd } from "react-icons/md";
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export default function TemporaryDrawer({open, setOpen}) {
- 
+  const navigate = useNavigate();
   const sidebarNavItems = [
     {
       display: 'Buscar',
@@ -51,10 +51,14 @@ export default function TemporaryDrawer({open, setOpen}) {
   
 
   ];
-  
+  const handleLogout = () => {
+    console.log('here')
+    localStorage.removeItem('userLoggin');
+    navigate('/login');
+  }
 
   const DrawerList = (
-    <Box sx={{ backgroundColor: '#050038', paddingBottom:47, width: 250, '@media (max-width: 700px)': {width: 200,}, 
+    <Box sx={{ backgroundColor: '#050038', paddingBottom:0, width: 250, '@media (max-width: 700px)': {width: 200,}, 
     }}  role="presentation" onClick={() => {
       setOpen(false)
     }}>
@@ -80,7 +84,7 @@ export default function TemporaryDrawer({open, setOpen}) {
         ))}
       </List>
       <Divider />      
-    
+      <button onClick={handleLogout} className='logout'>Cerrar sesion</button>
     </Box>
     
   );

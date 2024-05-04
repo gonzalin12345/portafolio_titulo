@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './lista.css';
+import { Row, Col } from 'react-bootstrap';
 const ListarUsuarios = () => {
   const [data, setData] = useState(null);
 
@@ -21,7 +22,7 @@ const ListarUsuarios = () => {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
       {data ? (
         
         /*<ul className='lista-bonita'>
@@ -33,12 +34,12 @@ const ListarUsuarios = () => {
           <h1> Aqui podra visualizar la informacion de todos los usuarios</h1>
         <div key="lista" className='lista-container'>
         {data.map(item => (
-          <div key={item.rut} className='lista'>
-            <div> Nombre: {item.nombre} </div>
-            <div> Apellido: {item.apellido} </div>
-            <div> Rut: {item.rut} </div>
-            <div> Email: {item.email} </div>
-          </div>
+            <div className='lista' key={item.rut}>
+              <div> Nombre: {item.nombre} </div>
+              <div> Apellido: {item.apellido} </div>
+              <div> Rut: {item.rut} </div>
+              <div> Email: {item.email} </div>
+            </div>
         ))}
         </div>
         </div>

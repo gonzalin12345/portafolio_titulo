@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './registrar.css';
+import Swal from 'sweetalert2'
 const RegistroUsuario = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
@@ -19,7 +20,6 @@ const RegistroUsuario = () => {
       [name]: value
     }));
   };
-
   // Manejar el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +34,8 @@ const RegistroUsuario = () => {
         },
         body: JSON.stringify(formData),
       });
+      const nombre = formData.nombre;
+      const apellido = formData.apellido;
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -49,8 +51,12 @@ const RegistroUsuario = () => {
         username: '',
         password: ''
       });
- */
-      alert('Registro exitoso');
+ */   
+      Swal.fire({
+        title: "Usuario Registrado",
+        text: `Bienvenid@ ${nombre} ${apellido} `,
+        icon: "success"
+      });
     } catch (error) {
       console.error('Error al registrar usuario:', error);
     }

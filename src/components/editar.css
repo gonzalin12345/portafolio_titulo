@@ -1,0 +1,48 @@
+.editar{
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+.editar form{
+    display: flex;
+    flex-direction: column;
+}
+.editar div{
+    display: flex;
+    flex-direction: row;
+}
+@media screen and (max-width:700px){
+    .editar div{
+        display: flex;
+        flex-direction: column;
+    }
+    .editar label p{
+        font-size: 20px;
+    }
+}
+.editar label p{
+    margin: 4px 0px;
+    display: flex;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.editar input{
+    padding: 8px;
+    margin-bottom: 28px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 235px;
+    height: 20px;
+}
+.editar button{
+    background-color: #414BB2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0px 100px 0px 100px;
+    color: rgb(247, 249, 252);
+    padding: 10px;
+}

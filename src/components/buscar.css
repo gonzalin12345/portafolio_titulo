@@ -1,0 +1,64 @@
+.buscar{
+    padding: 30px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    flex: 0.23;
+}
+
+.buscar form{
+    display: flex;
+    flex-direction: column;
+}
+.buscar label p{
+    margin: 4px 0px;
+    display: flex;
+    font-size: 23px;
+    color: rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    justify-content: center;
+}
+.buscar input{
+    padding: 8px;
+    margin: 10px 0px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+.buscar button{
+    background-color: #414BB2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0px 50px;
+    color: rgb(247, 249, 252);
+    padding: 10px;
+}
+.container{
+    flex-direction: row;
+    display: flex;
+    flex: 0.8;
+    justify-content: space-evenly;
+}
+.buscado{
+    padding: 35px 13px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
+}
+.buscado p{
+    margin: 4px 0px;
+    display: flex;
+    font-size: 23px;
+    color: rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+@media screen and (max-width:700px){
+    .container{
+        flex-direction: column;
+        display: flex;
+        flex: 0.8;
+        justify-content: space-evenly;
+    }
+}

@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import './sidebar.css';
 import { FaBars } from "react-icons/fa";
-
 import Button from '@mui/material/Button';
+import { FaArrowLeft } from "react-icons/fa";
 
 
 
@@ -49,11 +49,16 @@ const Sidebar = ({changeOpen}) => {
   const location = useLocation(); 
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleGoBack = () => {
+    navigate(-1); // Volver a la página anterior en el historial
+  };
+
+
+  /*const handleLogout = () => {
     console.log('here')
     localStorage.removeItem('userLoggin');
     navigate('/login');
-  }
+  }*/
 
  
 
@@ -111,9 +116,9 @@ const Sidebar = ({changeOpen}) => {
 
       <Button onClick={() => {
       changeOpen(true)
-      }} className='menu'><FaBars/></Button>
+      }} className='menu'><FaBars style={{fontSize:40}} /></Button>
       <h1>{getTitle()}</h1>
-      <button onClick={handleLogout} className='logout'>Cerrar sesion</button>
+      <Button onClick={handleGoBack} startIcon={<FaArrowLeft style={{fontSize:50}} />}></Button>
     </div>
   );
 

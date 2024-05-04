@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const LoginUsuario = () => {
   // Estado para almacenar los datos del formulario
@@ -45,10 +46,19 @@ const LoginUsuario = () => {
 
       if (!response.ok) {
         console.log(response)
-        alert('Usuario no Registrado');
+        Swal.fire({
+          title: "Error al iniciar sesion",
+          text: `email o contraseña incorrectos`,
+          icon: "success"
+        });
         //throw new Error('Network response was not ok'); 
       } else {
 
+        Swal.fire({
+          title: "Sesion Iniciada",
+          text: `credenciales correctas`,
+          icon: "success"
+        });
         const data = await response.json();
         localStorage.setItem("userLoggin", JSON.stringify(data));
 

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import './delete.css'
+import Swal from 'sweetalert2'
+
 
 const DeleteUsuario = () => {
   // Estado para almacenar los datos del formulario
@@ -34,9 +37,17 @@ const DeleteUsuario = () => {
       });
 
       if (!response.ok) {
-        alert('error al eliminar');        
+        Swal.fire({
+          title: "Usuario No eliminado",
+          text: `Rut incorrecto`,
+          icon: "success"
+        });
       }else{
-        alert('Usuario Eliminado');
+        Swal.fire({
+          title: "Usuario Eliminado",
+          text: `Rut Correcto`,
+          icon: "success"
+        });
       }
      
        /*
@@ -57,11 +68,10 @@ const DeleteUsuario = () => {
   };
 
   return (
-    <div className='RegistroUsuario'>
-      <h2>Eliminar Usuario</h2>
+    <div className='delete'>
       <form onSubmit={handleSubmit}>
         <label>
-          id:
+          <p> Eliminar usuario por RUT:</p>
           <input
             type="text"
             name="rut"

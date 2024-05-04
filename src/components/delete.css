@@ -1,0 +1,33 @@
+.delete{
+    padding: 55px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+.delete form{
+    display: flex;
+    flex-direction: column;
+}
+.delete label p{
+    margin: 4px 0px;
+    display: flex;
+    font-size: 23px;
+    color: rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    justify-content: center;
+}
+.delete input{
+    padding: 8px;
+    margin: 10px 0px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+.delete button{
+    background-color: #414BB2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0px 50px;
+    color: rgb(247, 249, 252);
+    padding: 10px;
+}

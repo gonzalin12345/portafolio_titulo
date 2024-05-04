@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
+import './buscar.css'
+import Swal from 'sweetalert2'
 
 const BuscarUsuario = () => {
-  // Estado para almacenar los datos del formulario
-  const [formData, setFormData] = useState({
-    rut:'',
-    nombre: '',
-    apellido: '',
-    tipo_usuario: '',
-    email: '',
-    password: ''
-  });
+  // Estado para almacenar los datos del usuario buscado
+  const [usuarioEncontrado, setUsuarioEncontrado] = useState(null);
 
-  // Manejar cambios en los campos del formulario
+  // Estado para almacenar el valor del RUT ingresado en el formulario
+  const [rut, setRut] = useState('');
+
+  // Manejar cambios en el campo de RUT del formulario
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    setRut(e.target.value);
   };
 
-
-  const findUser = async () => {
+  const findUser = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/v1/usuario/'+formData.rut, {
+      const response = await fetch(`http://localhost:8000/api/v1/usuario/buscar/${rut}`, {
          method: 'GET',
          headers: {
            'Content-Type': 'application/json',
@@ -31,46 +25,48 @@ const BuscarUsuario = () => {
        });
        console.log(response)
        if (!response.ok) {
-         alert('Usuario no existe');        
-       }else{
-         alert('Usuario Encontrado');
+         Swal.fire({
+          title: "Usuario No encontrado",
+          text: `Ingrese un rut correcto`,
+          icon: "success"
+        });
+       } else {
+         const userData = await response.json();
+         Swal.fire({
+          title: "Usuario encontrado",
+          text: `Rut correcto`,
+          icon: "success"
+        });
+         setUsuarioEncontrado(userData);
        }
-      
-        /*
- 
-       // Limpiar el formulario después del registro exitoso
-       setFormData({
-         nombre: '',
-         apellido: '',
-         email: '',
-         username: '',
-         password: ''
-       });
-  */
-       
      } catch (error) {
-       console.error('Error al registrar usuario:', error);
+       console.error('Error al buscar usuario:', error);
      }
   }
 
-  // Manejar el envío del formulario
-
-
   return (
-    <div className='RegistroUsuario'>
-      <h2>Buscar usuario</h2>
-      <form >
+    <div className='container'>  
+      <form className='buscar'>
         <label>
-          rut:
+          <p>Buscar usuario por RUT</p>
           <input
             type="text"
-            name="rut"
-            value={formData.rut}
+            value={rut}
             onChange={handleChange}
+            placeholder='212345014'
           />
         </label>
         <button onClick={findUser}>Buscar</button>
       </form>
+      {usuarioEncontrado && (
+        <div className='buscado'>
+          <p>Rut: {usuarioEncontrado.rut}</p>
+          <p>Nombre: {usuarioEncontrado.nombre}</p>
+          <p>Apellido: {usuarioEncontrado.apellido}</p>
+          <p>Tipo de usuario: {usuarioEncontrado.tipo_usuario}</p>
+          <p>Email: {usuarioEncontrado.email}</p>
+        </div>
+      )}
     </div>
   );
 };
