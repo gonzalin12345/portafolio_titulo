@@ -1,11 +1,11 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/sidebar/sidebar';
 import RegistroUsuario from './components/registrar';
 import DeleteUsuario from './components/delete';
 import LoginUsuario from './components/login';
-import BuscarUsuario from './components/buscar';
+import BuscarUsuario from './components/buscar';  
 import ListarUsuarios from './components/listar';
 import EditarUsuario from './components/editar';
 import DrawerMenu from './components/DrawerMenu';
@@ -26,22 +26,19 @@ function App() {
     </div>
       */
 
-  const userLoggin = localStorage.getItem("userLoggin");
+  const userLoggin = localStorage.getItem("accessToken"); 
 
   console.log(userLoggin);
 
   return (
     <Router>
       <div className="App"> 
-      
-     
-      
-   
+
           <Routes>
             <Route path="/registro" element={<RegistroUsuario />} />
             <Route path="/login" element={<LoginUsuario />} />
 
-            <Route element={<ProtectedRoute user={userLoggin} />}>
+            <Route element={<ProtectedRoute user={userLoggin} />}>  
               <Route path="/delete" element={< DeleteUsuario/>} />
               <Route path="/buscar" element={<BuscarUsuario />} />
               <Route path="/listar" element={<ListarUsuarios />} />
@@ -49,7 +46,7 @@ function App() {
               <Route path="/drawer" element={<DrawerMenu />} />
               <Route path="/asistencia" element={<Asistencia />} />
             </Route>
-           
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         
       </div>  

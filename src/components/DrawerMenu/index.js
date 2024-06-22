@@ -53,8 +53,9 @@ export default function TemporaryDrawer({open, setOpen}) {
   ];
   const handleLogout = () => {
     console.log('here')
-    localStorage.removeItem('userLoggin');
-    navigate('/login');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    window.location.href = '/login';
   }
 
   const DrawerList = (

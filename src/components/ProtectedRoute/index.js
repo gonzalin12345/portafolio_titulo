@@ -10,7 +10,7 @@ import * as React from 'react';
 
 
 function ProtectedRoute({user, children}) {
-  const userLoggin = localStorage.getItem("userLoggin");
+  const userLoggin = localStorage.getItem("accessToken");
   const [open, setOpen] = React.useState(false);
 
   function changeOpen(){

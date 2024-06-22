@@ -12,12 +12,6 @@ const LoginUsuario = () => {
 
   const navigate = useNavigate();
 
-  const userLoggin = localStorage.getItem("userLoggin");
-
-  if(userLoggin) {
-    navigate('/buscar');
-  }
-
   // Manejar cambios en los campos del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +43,7 @@ const LoginUsuario = () => {
         Swal.fire({
           title: "Error al iniciar sesion",
           text: `email o contraseña incorrectos`,
-          icon: "success"
+          icon: "error"
         });
         //throw new Error('Network response was not ok'); 
       } else {
@@ -58,11 +52,16 @@ const LoginUsuario = () => {
           title: "Sesion Iniciada",
           text: `credenciales correctas`,
           icon: "success"
+        }).then(() => {
+          console.log('Redirigiendo a /buscar');
+          navigate('/buscar'); 
         });
+        
         const data = await response.json();
-        localStorage.setItem("userLoggin", JSON.stringify(data));
+        localStorage.setItem("accessToken", data.access); // Almacenar el token en el almacenamiento local
+        localStorage.setItem("refreshToken", data.refresh);
 
-        navigate('/buscar')
+
   
         
       }

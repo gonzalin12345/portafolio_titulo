@@ -16,11 +16,15 @@ const BuscarUsuario = () => {
 
   const findUser = async (e) => {
     e.preventDefault();
+
     try {
+      const accessToken = localStorage.getItem("accessToken");
+
       const response = await fetch(`http://localhost:8000/api/v1/usuario/buscar/${rut}`, {
          method: 'GET',
          headers: {
            'Content-Type': 'application/json',
+           'Authorization': `Bearer ${accessToken}`
          }
        });
        console.log(response)
