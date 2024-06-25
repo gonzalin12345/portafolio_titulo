@@ -15,38 +15,65 @@ import { BsTrash } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineAssignmentInd } from "react-icons/md";
-
+import { PiStudent } from "react-icons/pi";
+import './DrawerMenu.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export default function TemporaryDrawer({open, setOpen}) {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
+
   const sidebarNavItems = [
     {
       display: 'Buscar',
       to: '/buscar',
       icon: <GoSearch />,
+      roles: ['admin', 'directora', 'jefa utp', 'secretaria']
     },
     {
       display: 'Eliminar',
       to: '/delete',
       icon: <BsTrash />,
+      roles: ['admin', 'directora', 'profesor', 'jefa utp', 'secretaria']
 
     },
     {
       display: 'Listar',
       to: '/listar',
       icon: <FaListUl />,
+      roles: ['admin', 'directora', 'profesor', 'jefa utp', 'secretaria']
     },
     {
       display: 'Editar',
       to: '/editar',
       icon: <FaUserEdit />,
+      roles: ['admin', 'directora', 'profesor', 'jefa utp', 'secretaria']
     },
     {
       display: 'Asistencia',
       to: '/asistencia',
       icon:<MdOutlineAssignmentInd />,
+      roles: ['admin', 'directora','profesor', 'jefa utp', 'secretaria']
     },
+    {
+      display: 'Estudiante',
+      to: '/estudiante',
+      icon:<PiStudent />,
+      roles: ['admin','directora','profesor', 'jefa utp', 'secretaria']
+    },    
+    {
+      display: 'AsignarCurso',
+      to: '/asignarCurso',
+      icon:<PiStudent />,
+      roles: ['admin','directora','profesor', 'jefa utp', 'secretaria']
+    },  
+    {
+      display: 'Bitacora',
+      to: '/bitacora',
+      icon:<PiStudent />,
+      roles: ['admin','directora','profesor', 'jefa utp', 'secretaria']
+    },  
+
 
   
 
@@ -64,28 +91,21 @@ export default function TemporaryDrawer({open, setOpen}) {
       setOpen(false)
     }}>
       <List>
-        {sidebarNavItems.map((item, index) => (
+      {sidebarNavItems.filter(item => item.roles.includes(user.tipo_usuario)).map((item, index) => (
           <ListItem key={item.display} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              {item.icon}
-            </ListItemIcon>
-            
-            <NavLink
-           to={item.to}
-           key={index}
-           style={{textDecoration: 'none'}}
-         // Esta clase se aplicará cuando el enlace esté activo
-         >
-        <ListItemText primary={item.display} />
-         </NavLink>
-          </ListItemButton>
-        </ListItem>
-          
+            <ListItemButton>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <NavLink to={item.to} style={{ textDecoration: 'none' }}>
+                <ListItemText primary={item.display} />
+              </NavLink>
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
-      <Divider />      
-      <button onClick={handleLogout} className='logout'>Cerrar sesion</button>
+      <Divider  />     
+      <div className='logout-container'>
+        <button onClick={handleLogout} className='logout'>Cerrar sesion</button>
+      </div> 
     </Box>
     
   );
@@ -94,9 +114,15 @@ export default function TemporaryDrawer({open, setOpen}) {
   return (
     <div>
     
-      <Drawer open={open} onClose={() => {
-        setOpen(false)
-      }}>
+      <Drawer 
+        open={open} 
+        onClose={() => setOpen(false)}
+        PaperProps={{
+          sx: {
+            backgroundColor: '#050038',
+          },
+
+        }}>
         {DrawerList}
       </Drawer>
     </div>

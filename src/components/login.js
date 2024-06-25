@@ -53,13 +53,14 @@ const LoginUsuario = () => {
           text: `credenciales correctas`,
           icon: "success"
         }).then(() => {
-          console.log('Redirigiendo a /buscar');
-          navigate('/buscar'); 
+          console.log('Redirigiendo a /asistencia');
+          navigate('/asistencia'); 
         });
         
         const data = await response.json();
         localStorage.setItem("accessToken", data.access); // Almacenar el token en el almacenamiento local
         localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem("user", JSON.stringify({ email: formData.email, tipo_usuario: data.tipo_usuario }));
 
 
   
@@ -79,7 +80,7 @@ const LoginUsuario = () => {
  */
    
     } catch (error) {
-      console.error('Error al registrar usuario:', error);
+      console.error('Error al iniciar sesion:', error);
     }
   };
 

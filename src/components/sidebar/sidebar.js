@@ -92,6 +92,21 @@ const Sidebar = ({changeOpen}) => {
       display: 'Drawer',
       to: '/drawer',
     },
+    {
+      display: 'Estudiante',
+      to: '/estudiante',
+      title:'Registro de Estudiante'
+    },
+    {
+      display: 'AsignarCurso',
+      to: '/asignarCurso',
+      title:'Asignar Curso'
+    },
+    {
+      display: 'Bitacora',
+      to: '/bitacora',
+      title:'Bitacora'
+    },
 
   ];
 

@@ -1,0 +1,49 @@
+.estudiante{
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+  }
+  .estudiante h1{
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(8, 7, 7);
+      margin: 0px;
+  }
+  .estudiante form{
+      display: flex;
+      flex-direction: column;
+      margin: 15px 0px 0px 0px;
+  }
+  .datos{
+      display: flex;
+      flex-direction: row;
+  }
+  .estudiante label p{
+      margin: 4px 0px;
+      display: flex;
+      font-size: 12px;
+      color: gray;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+  .estudiante input{
+    padding: 8px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .estudiante button{
+      background-color: #414BB2;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 0;
+      color: rgb(247, 249, 252);
+      padding: 10px;
+  }
+  @media screen and (max-width:700px){
+    .datos{
+      display: flex;
+      flex-direction: column;
+    }
+  }

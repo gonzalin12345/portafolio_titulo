@@ -10,8 +10,10 @@ import ListarUsuarios from './components/listar';
 import EditarUsuario from './components/editar';
 import DrawerMenu from './components/DrawerMenu';
 import Asistencia from './components/asistencia';
-
-import ProtectedRoute from './components/ProtectedRoute';  
+import Estudiante from './components/Estudiante';
+import AsignarCurso from './components/asignarCurso';
+import ProtectedRoute from './components/ProtectedRoute/index';
+import Bitacora from './components/Bitacora';
 
 
 
@@ -38,14 +40,21 @@ function App() {
             <Route path="/registro" element={<RegistroUsuario />} />
             <Route path="/login" element={<LoginUsuario />} />
 
-            <Route element={<ProtectedRoute user={userLoggin} />}>  
-              <Route path="/delete" element={< DeleteUsuario/>} />
-              <Route path="/buscar" element={<BuscarUsuario />} />
-              <Route path="/listar" element={<ListarUsuarios />} />
-              <Route path="/editar" element={<EditarUsuario />} />
-              <Route path="/drawer" element={<DrawerMenu />} />
-              <Route path="/asistencia" element={<Asistencia />} />
-            </Route>
+
+              <Route element={<ProtectedRoute allowedRoles={['admin', 'directora', 'secretaria', 'profesor','jefa_utp']} />}>
+                <Route path="/delete" element={< DeleteUsuario/>} />
+                <Route path="/editar" element={<EditarUsuario />} />
+                <Route path="/drawer" element={<DrawerMenu />} />
+                <Route path="/asistencia" element={<Asistencia />} />
+                <Route path="/buscar" element={<BuscarUsuario />} />
+                <Route path="/listar" element={<ListarUsuarios />} />
+                <Route path="/estudiante" element={<Estudiante />} />
+                <Route path="/asignarCurso" element={<AsignarCurso />} />
+                <Route path="/bitacora" element={<Bitacora />} />
+                
+              </Route>
+
+
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         

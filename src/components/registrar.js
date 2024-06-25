@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './registrar.css';
 import Swal from 'sweetalert2'
+import RoleSelect from './RoleSelect';
+
 const RegistroUsuario = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
@@ -41,17 +43,18 @@ const RegistroUsuario = () => {
         throw new Error('Network response was not ok');
       }
      
-       /*
+       
 
       // Limpiar el formulario después del registro exitoso
       setFormData({
+        rut: '',
         nombre: '',
         apellido: '',
+        tipo_usuario: '',
         email: '',
-        username: '',
         password: ''
       });
- */   
+   
       Swal.fire({
         title: "Usuario Registrado",
         text: `Bienvenid@ ${nombre} ${apellido} `,
@@ -91,13 +94,9 @@ const RegistroUsuario = () => {
        <div className='datos'>
         <label>
           <p>Tipo de usuario</p> 
-          <input style={{'margin': '0px 10px 0px 0px'}}
-            type="text"
-            name="tipo_usuario"
-            value={formData.tipo_usuario}
-            placeholder='user'
-            onChange={handleChange}
-          />
+          <RoleSelect value={formData.tipo_usuario} style={{'margin': '0px 10px 0px 0px'}}
+          onChange={(e) => setFormData({ ...formData, tipo_usuario: e.target.value })} />
+
         </label>
         <label>
           <p>Apellido</p>

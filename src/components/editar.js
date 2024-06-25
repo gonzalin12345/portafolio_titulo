@@ -125,6 +125,7 @@ const EditarUsuario = () => {
               placeholder='tu contraseña'
             />
           </label>
+          
         </div>
         <button type="submit">Modificar</button>
       </form>
