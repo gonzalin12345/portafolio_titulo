@@ -1,0 +1,43 @@
+.lista-cursos {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .curso-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  
+  .curso-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .asistencia-button {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  .notas-button {
+    background-color: #2196F3; /* Blue */
+  }
+  
+  .anotacion-button {
+    background-color: #FF9800; /* Orange */
+  }
+  
+  .citacion-button {
+    background-color: #f44336; /* Red */
+  }
+  

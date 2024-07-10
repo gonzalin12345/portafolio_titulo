@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './editar.css'
+import RoleSelect from './RoleSelect';
 
 const EditarUsuario = () => {
   // Estado para almacenar los datos del formulario
@@ -72,14 +73,9 @@ const EditarUsuario = () => {
             />
           </label>
           <label>
-            <p>Tipo de usuario:</p>
-            <input
-              type="text"
-              name="tipo_usuario"
-              value={formData.tipo_usuario}
-              onChange={handleChange}
-              placeholder='admin'
-            />
+          <p>Tipo de usuario</p> 
+          <RoleSelect value={formData.tipo_usuario} style={{'margin': '0px 10px 0px 0px'}}
+          onChange={(e) => setFormData({ ...formData, tipo_usuario: e.target.value })} />
           </label>
         </div>
         <div>

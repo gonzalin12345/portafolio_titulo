@@ -13,9 +13,6 @@ function ProtectedRoute({ allowedRoles }) {
     return <Navigate to="/login" replace />;
   }
 
-  if (!allowedRoles.includes(user.tipo_usuario)) {
-    return <Navigate to="/unauthorized" replace />;
-  }
 
   return (
     <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>

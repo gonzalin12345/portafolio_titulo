@@ -54,7 +54,7 @@ const LoginUsuario = () => {
           icon: "success"
         }).then(() => {
           console.log('Redirigiendo a /asistencia');
-          navigate('/asistencia'); 
+          navigate('/listar'); 
         });
         
         const data = await response.json();

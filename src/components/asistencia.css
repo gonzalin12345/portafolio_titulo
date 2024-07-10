@@ -47,3 +47,77 @@
       flex: 1;
     }
   }
+  .asistencia-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.asistencia-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.asistencia-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.asistencia-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.asistencia-nombre {
+  flex: 1;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.asistencia-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.asistencia-checkbox input {
+  margin-right: 8px;
+}
+
+.asistencia-checkbox label {
+  font-size: 16px;
+}
+
+.presente {
+  color: green;
+}
+
+.ausente {
+  color: red;
+}
+
+.asistencia-submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.asistencia-submit:hover {
+  background-color: #45a049;
+}
+
+

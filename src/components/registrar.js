@@ -78,7 +78,7 @@ const RegistroUsuario = () => {
             value={formData.rut}
             placeholder='21223034-4'
             onChange={handleChange}
-          />
+          />    
         </label>
         <label>
           <p>Nombre</p>

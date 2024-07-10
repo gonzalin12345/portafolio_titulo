@@ -27,14 +27,13 @@ const DeleteUsuario = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     //let dataJson =JSON.stringify(formData); 
-   console.log(formData.id)
+   console.log(formData.rut)
     try {
       const accessToken = localStorage.getItem("accessToken");
      const response = await fetch('http://localhost:8000/api/v1/usuario/delete/'+formData.rut, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
         }
       });
 

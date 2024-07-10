@@ -33,6 +33,14 @@
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+
+.registro select{
+  padding: 7px;
+  width: 187px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
 .registro button{
     background-color: #414BB2;
     border: 1px solid #ccc;

@@ -1,4 +1,4 @@
-.asignar-curso {
+/*.asignar-curso {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
   }
+  
   
   .asignar-curso form label {
     margin-bottom: 15px;
@@ -44,4 +45,65 @@
   .asignar-curso form button:hover {
     background-color: #333366;
   }
+    */
+
+.asignarcurso{
+  border: 1px solid gray;
+  padding: 25px 65px;
+  width: 62%;
+}
+.asignarcurso form{
   
+}
+
+.asignarcurso label p{
+  margin: 4px 0px;
+  display: flex;
+  font-size: 22px;
+  color: rgb(0, 0, 0);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.asignarcurso input{
+padding: 15px;
+margin-bottom: 30px;
+border: 2px solid #ccc;
+border-radius: 3px;
+min-width: 360px;
+
+}
+.asignarcurso select{
+  padding: 15px;
+  min-width: 394px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+}
+.asignarcurso button{
+  background-color: #050038;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0;
+  color: rgb(247, 249, 252);
+  padding: 10px;
+  width: 50%;
+}
+.asignarcurso .data{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+@media screen and (max-width:700px){
+  .asignarcurso .data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .asignarcurso input{
+    min-width: 90%;
+  }
+  .asignarcurso select{
+    min-width: 104%;
+    margin-bottom: 20px;
+  }
+}
+

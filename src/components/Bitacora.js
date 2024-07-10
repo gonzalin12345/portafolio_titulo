@@ -10,27 +10,29 @@ const Bitacora = () => {
     rutProfesor: '',
     descripcion: ''
   });
-  const [cursos, setCursos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchProfesorData();
   }, []);
 
-  const fetchCursos = async (rutProfesor) => {
+  const fetchCursos = async (email) => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/curso');
+      const response = await fetch(`http://localhost:8000/api/v1/curso?email=${email}`);
       if (!response.ok) {
         throw new Error('Error al obtener cursos');
       }
       const data = await response.json();
-      setCursos(data);
-
-      const cursoAsignado = data.find(curso => curso.rutProfesor === rutProfesor);
-      setFormData(prevState => ({
-        ...prevState,
-        nombreCurso: cursoAsignado ? cursoAsignado.nombre : ''
-      }));
+      
+      // Asumiendo que solo hay un curso asignado por profesor, puedes ajustar esto si hay múltiples cursos
+      if (data.length > 0) {
+        const cursoAsignado = data[0];
+        setFormData(prevState => ({
+          ...prevState,
+          nombreCurso: cursoAsignado.nombre
+        }));
+      }
+      
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -38,24 +40,40 @@ const Bitacora = () => {
   };
 
   const fetchProfesorData = async () => {
-    const email = localStorage.getItem('email');
+    const user = JSON.parse(localStorage.getItem('user'));
+    const email = user ? user.email : null;
+    if (!email) {
+      console.error('Email no encontrado en localStorage');
+      setIsLoading(false);
+      return;
+    }
     try {
       const response = await fetch(`http://localhost:8000/api/v1/profesor?email=${email}`);
       if (!response.ok) {
         throw new Error('Error al obtener datos del profesor');
       }
       const data = await response.json();
-      const profesor = data[0];
-      
-      setFormData(prevState => ({
-        ...prevState,
-        nombreProfesor: `${profesor.nombre} ${profesor.apellido}`,
-        rutProfesor: profesor.rut,
-      }));
-      
-      fetchCursos(profesor.rut); // Fetch cursos después de obtener el rut del profesor
+      if (data.length > 0) {
+        const profesor = data[0];
+        
+        setFormData(prevState => ({
+          ...prevState,
+          nombreProfesor: `${profesor.nombre} ${profesor.apellido}`,
+          rutProfesor: profesor.rut,
+        }));
+        
+        fetchCursos(email); // Fetch cursos después de obtener el email del profesor
+      } else {
+        setIsLoading(false);
+        Swal.fire({
+          title: "Error",
+          text: "No se encontraron datos del profesor",
+          icon: "error"
+        });
+      }
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
 
@@ -103,7 +121,6 @@ const Bitacora = () => {
 
   return (
     <div className="bitacora">
-      <h1>Registro de Bitácora</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Nombre del Curso:

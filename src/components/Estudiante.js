@@ -147,7 +147,9 @@ const RegistroEstudiante = () => {
             />
           </label>
         </div>
-        <button type="submit">Registrar Estudiante</button>
+        <div>
+          <button type="submit">Registrar Estudiante</button>
+        </div>
       </form>
     </div>
   );

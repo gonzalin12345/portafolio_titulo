@@ -48,10 +48,12 @@ const Sidebar = ({changeOpen}) => {
   const indicatorRef = useRef();
   const location = useLocation(); 
   const navigate = useNavigate();
+  const userLoggin = localStorage.getItem('accessToken');
+  const user = userLoggin ? JSON.parse(localStorage.getItem('user')) : null;  
 
   const handleGoBack = () => {
     navigate(-1); // Volver a la página anterior en el historial
-  };
+  };  
 
 
   /*const handleLogout = () => {
@@ -62,7 +64,7 @@ const Sidebar = ({changeOpen}) => {
 
  
 
-  const sidebarNavItems = [
+  const sidebarNavItems =[
     {
       display: 'Buscar',
       to: '/buscar',
@@ -105,7 +107,17 @@ const Sidebar = ({changeOpen}) => {
     {
       display: 'Bitacora',
       to: '/bitacora',
-      title:'Bitacora'
+      title:'Registro de Bitácora'
+    },
+    {
+      display: 'ListaCurso',
+      to: '/listaCurso',
+      title:'Lista de Cursos'
+    },
+    {
+      display: 'BitacoraList',
+      to: '/bitacoraList',
+      title:'Lista de bitacora'
     },
 
   ];
@@ -133,7 +145,7 @@ const Sidebar = ({changeOpen}) => {
       changeOpen(true)
       }} className='menu'><FaBars style={{fontSize:40}} /></Button>
       <h1>{getTitle()}</h1>
-      <Button onClick={handleGoBack} startIcon={<FaArrowLeft style={{fontSize:50}} />}></Button>
+      <Button onClick={handleGoBack}     startIcon={<FaArrowLeft style={{fontSize:50}} />}></Button>
     </div>
   );
 

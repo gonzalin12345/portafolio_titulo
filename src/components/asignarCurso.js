@@ -115,46 +115,54 @@ const AsignarCurso = () => {
   };
 
   return (
-    <div className="asignar-curso">
-      <h1>Asignar Curso</h1>
+    <div className="asignarcurso">
       <form onSubmit={handleSubmit}>
-        <label>
-          Nombre del Curso:
-          <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required />
-        </label>
-        <label>
-          Cantidad de Alumnos:
-          <input type="number" name="cantidadAlumno" value={formData.cantidadAlumno} onChange={handleChange} required />
-        </label>
-        <label>
-          Seleccione el Nombre del Profesor:
-          <select name="profesor" value={formData.profesor} onChange={handleChange} required>
-            <option value="">Seleccione</option>
-            {profesores.map(profesor => (
-              <option key={profesor.rut} value={profesor.rut}>{profesor.nombre} {profesor.apellido}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Seleccione Días de clases:
-          <select name="dias" multiple value={formData.dias} onChange={handleChange} required>
-            <option value="lunes">Lunes</option>
-            <option value="martes">Martes</option>
-            <option value="miercoles">Miércoles</option>
-            <option value="jueves">Jueves</option>
-            <option value="viernes">Viernes</option>
-          </select>
-        </label>
-        <label>
-          Buscar Estudiantes:
-          <input type="text" onChange={handleEstudianteSearch} placeholder="Buscar Estudiantes" />
-          <select name="rutEstudiante" value={formData.rutEstudiante} onChange={handleChange} required>
-            <option value="">Seleccione</option>
-            {filteredEstudiantes.map(estudiante =>(
-              <option key={estudiante.rut} value={estudiante.rut}>{estudiante.nombre} {estudiante.apellido}</option>
-            ))}
-          </select>
-        </label>
+        <div className='data'>
+          <label>
+            <p>Nombre del Curso</p>
+            <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required />
+          </label>
+          <label>
+            <p>Cantidad de Alumnos</p>
+            <input type="number" name="cantidadAlumno" value={formData.cantidadAlumno} onChange={handleChange} required />
+          </label>
+        </div>
+        <div className='data'>
+          <label>
+             
+            <select name="profesor" value={formData.profesor} onChange={handleChange} required>
+              <option value="">Seleccione el nombre del Profesor</option>
+              {profesores.map(profesor => (
+                <option key={profesor.rut} value={profesor.rut}>{profesor.nombre} {profesor.apellido}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            
+            <select name="dias" multiple value={formData.dias} onChange={handleChange} required>
+              <option value="lunes">Lunes</option>
+              <option value="martes">Martes</option>
+              <option value="miercoles">Miércoles</option>
+              <option value="jueves">Jueves</option>
+              <option value="viernes">Viernes</option>
+            </select>
+          </label>
+        </div>
+        <div className='data'>
+          <label>
+            <p>Buscar Estudiantes</p>
+            <input type="text" onChange={handleEstudianteSearch} placeholder="Buscar Estudiantes" />
+          </label>
+          <label>
+            <p>Seleccionar Estudiante</p>
+            <select name="rutEstudiante" value={formData.rutEstudiante} onChange={handleChange} required>
+              <option value="">Seleccione</option>
+              {filteredEstudiantes.map(estudiante => (
+                <option key={estudiante.rut} value={estudiante.rut}>{estudiante.nombre} {estudiante.apellido}</option>
+              ))}
+            </select>
+          </label>
+        </div>
         <button type="submit">Guardar</button>
       </form>
     </div>

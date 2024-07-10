@@ -16,20 +16,21 @@ import { FaListUl } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineAssignmentInd } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
+import { MdAssignmentAdd } from "react-icons/md";
+import { FaBookOpen } from "react-icons/fa";
+import { MdAssignment } from "react-icons/md";
+import { FaBookReader } from "react-icons/fa";
 import './DrawerMenu.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export default function TemporaryDrawer({open, setOpen}) {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
+  const userLoggin = localStorage.getItem('accessToken');
+  const user = userLoggin ? JSON.parse(localStorage.getItem('user')) : null;      
 
   const sidebarNavItems = [
-    {
-      display: 'Buscar',
-      to: '/buscar',
-      icon: <GoSearch />,
-      roles: ['admin', 'directora', 'jefa utp', 'secretaria']
-    },
+
+    
     {
       display: 'Eliminar',
       to: '/delete',
@@ -43,18 +44,8 @@ export default function TemporaryDrawer({open, setOpen}) {
       icon: <FaListUl />,
       roles: ['admin', 'directora', 'profesor', 'jefa utp', 'secretaria']
     },
-    {
-      display: 'Editar',
-      to: '/editar',
-      icon: <FaUserEdit />,
-      roles: ['admin', 'directora', 'profesor', 'jefa utp', 'secretaria']
-    },
-    {
-      display: 'Asistencia',
-      to: '/asistencia',
-      icon:<MdOutlineAssignmentInd />,
-      roles: ['admin', 'directora','profesor', 'jefa utp', 'secretaria']
-    },
+    
+
     {
       display: 'Estudiante',
       to: '/estudiante',
@@ -64,20 +55,14 @@ export default function TemporaryDrawer({open, setOpen}) {
     {
       display: 'AsignarCurso',
       to: '/asignarCurso',
-      icon:<PiStudent />,
+      icon:<MdAssignmentAdd />,
       roles: ['admin','directora','profesor', 'jefa utp', 'secretaria']
-    },  
-    {
-      display: 'Bitacora',
-      to: '/bitacora',
-      icon:<PiStudent />,
-      roles: ['admin','directora','profesor', 'jefa utp', 'secretaria']
-    },  
-
-
-  
+    },   
+      
 
   ];
+
+
   const handleLogout = () => {
     console.log('here')
     localStorage.removeItem('accessToken');
